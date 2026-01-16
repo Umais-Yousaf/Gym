@@ -1,5 +1,6 @@
 import React from 'react'
 import Navbar from './components/Navbar'
+import About from './components/About'
 import Banner from './components/Banner'
 import Wcu from './components/Wcu'
 import Mt from './components/Mt'
@@ -14,6 +15,7 @@ const App = () => {
     <>
     <Navbar/>
     <Banner/>
+    <About/>
     <Wcu/> 
     <Mt/>
     <Pricing/>

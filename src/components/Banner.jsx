@@ -1,154 +1,201 @@
-import React from 'react'
-import { FaCertificate, FaDumbbell, FaFacebook, FaHeartbeat, FaInstagram, FaMedal, FaPlay, FaRunning, FaThumbsUp, FaTiktok, FaUser, FaUsers } from 'react-icons/fa'
-import bgimage from '../assets/WhatsApp Image 2025-10-13 at 03.14.07_99040228.jpg';
+import React, { useState } from "react";
+import {
+  FaCertificate,
+  FaDumbbell,
+  FaFacebook,
+  FaHeartbeat,
+  FaInstagram,
+  FaMedal,
+  FaPlay,
+  FaRunning,
+  FaThumbsUp,
+  FaTiktok,
+  FaUsers,
+} from "react-icons/fa";
+import { motion, AnimatePresence } from "framer-motion";
+import bgimage from "../assets/bgrr.png";
+import demoVideo from "../assets/2video.mp4";
 
 const Banner = () => {
+  const [showVideo, setShowVideo] = useState(false);
+
   return (
     <div>
-        {/*banner section*/}
-        <div id='home' className='relative h-screen bg-black overflow-hidden flex flex-col
-        lg:flex-row items-center justify-center lg:justify-between'>
-            {/*conatct section*/}
-            <div className='relative z-10 flex flex-col justify-center items-start
-            px-6 sm:px-10 lg:px-20 text-white bg-gradient-to-r from-black
-            via-transparent h-full w-full lg:w-1/2'>
-                <h1  className='text-3xl sm:text-4xl md:text-5xl lg:text-6xl
-                font-extrabold mb-6 animate-slideInLeft text-center lg:text-left '>
-                    Elevate your <span className='text-purple-500'>Workout</span>
+      {/* ================= HERO ================= */}
+      <section
+        id="home"
+        className="
+          relative
+          min-h-screen
+          bg-black
+          overflow-hidden
+          pt-24        /* space for navbar */
+          lg:pt-0
+          flex
+          flex-col
+          lg:flex-row
+        "
+      >
+        {/* TEXT */}
+        <motion.div
+          initial={{ opacity: 0, y: 60 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1 }}
+          className="
+            relative
+            z-20
+            w-full
+            lg:w-1/2
+            px-6
+            sm:px-10
+            lg:px-20
+            flex
+            flex-col
+            justify-center
+            text-white
+          "
+        >
+          <motion.h1
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2 }}
+            className="
+              text-3xl
+              sm:text-4xl
+              md:text-5xl
+              lg:text-6xl
+              font-extrabold
+              mb-6
+            "
+          >
+            Elevate your <span className="text-purple-500">Workout</span>
+          </motion.h1>
 
-                </h1>
-                <p className='text-sm sm:text-base md:text-lg lg:text-xl mb-8 animate-slideInleft delay-200
-                text-center  lg:text-left'>
-                    Push harder than yesterday if you want a different tomorrow.” 💪
+          <motion.p
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4 }}
+            className="
+              text-sm
+              sm:text-base
+              md:text-lg
+              lg:text-xl
+              mb-8
+              leading-relaxed
+            "
+          >
+            Push harder than yesterday if you want a different tomorrow.
+            <br />
+            No excuses. Just results.
+            <br />
+            Train insane or remain the same.
+          </motion.p>
 
-                    “No excuses, just results — your only limit is you.”
+          {/* FEATURES */}
+          <div className="flex flex-wrap gap-6 mb-8">
+            {[
+              { icon: <FaDumbbell />, text: "Strength" },
+              { icon: <FaHeartbeat />, text: "Cardio" },
+              { icon: <FaRunning />, text: "Endurance" },
+            ].map((item, i) => (
+              <motion.div
+                key={i}
+                whileHover={{ scale: 1.1 }}
+                className="flex items-center gap-3"
+              >
+                <span className="text-purple-500 text-3xl">{item.icon}</span>
+                <span className="font-medium">{item.text}</span>
+              </motion.div>
+            ))}
+          </div>
 
-                    “Train insane or remain the same — greatness starts here.”
-                    
+          {/* BUTTONS */}
+          <div className="flex flex-wrap gap-4 mb-6">
+            <motion.button
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
+              className="px-6 py-3 bg-purple-400 text-black rounded-full font-semibold"
+            >
+              Get Started
+            </motion.button>
 
-                </p>
-                {/*icons*/}
-                <div className='flex flex-wrap sm:flex-row gap-4 justify-center
-                lg:justify-start mb-8 animate-fadeIn delay-400'>
-                    <div className='flex items-center gap-3 group'>
-                        <FaDumbbell className='text-purple-500 text-2xl sm:text-3xl
-                        transition-transform transform group-hover:rotate-12 group-hover:scale-110'/>
-                        <span className='text-sm sm:text-lg font-medium'>
-                            Strenth Training
+            <motion.button
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={() => setShowVideo(true)}
+              className="px-6 py-3 bg-white text-black rounded-full font-semibold flex items-center gap-2"
+            >
+              <FaPlay /> Watch Demo
+            </motion.button>
+          </div>
 
-                        </span>
+          {/* SOCIAL */}
+          <div className="flex gap-6">
+            {[
+              {
+                Icon: FaFacebook,
+                link: "https://www.facebook.com/share/1AYKuNaz7f/",
+              },
+              {
+                Icon: FaInstagram,
+                link:
+                  "https://www.instagram.com/umais78626?igsh=NWFtejJsZnJvbDV1",
+              },
+              {
+                Icon: FaTiktok,
+                link:
+                  "https://www.tiktok.com/@umaisyousaf13?_r=1&_t=ZS-937Is3GfTqm",
+              },
+            ].map(({ Icon, link }, i) => (
+              <motion.a
+                key={i}
+                href={link}
+                target="_blank"
+                rel="noopener noreferrer"
+                whileHover={{ scale: 1.2 }}
+                className="text-purple-500 text-3xl"
+              >
+                <Icon />
+              </motion.a>
+            ))}
+          </div>
+        </motion.div>
 
-                    </div>
+        {/* IMAGE SECTION (VISIBLE ON ALL SCREENS) */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1.2 }}
+          className="absolute top-0 right-0 h-full w-full lg:w-1/2 flex justify-center items-center z-10"
+        >
+          <img
+            src={bgimage}
+            alt="gym"
+            className="h-full w-full object-contain opacity-80"
+          />
+        </motion.div>
+      </section>
 
-                         <div className='flex items-center gap-3 group'>
-                        <FaHeartbeat className='text-purple-500 text-2xl sm:text-3xl
-                        transition-transform transform group-hover:rotate-12 group-hover:scale-110'/>
-                        <span className='text-sm sm:text-lg font-medium'>
-                            Cardio Fitness
-
-                        </span>
-
-                    </div>
-                         <div className='flex items-center gap-3 group'>
-                        <FaRunning className='text-purple-500 text-2xl sm:text-3xl
-                        transition-transform transform group-hover:rotate-12 group-hover:scale-110'/>
-                        <span className='text-sm sm:text-lg font-medium'>
-                           Endurance
-
-                        </span>
-
-                    </div>
-
-                </div>
-                {/*buttons*/}
-                <div className='flex flex-wrap gap-4 justify-center lg:justify-start mb-6'>
-                    <button className='px-4 sm:px-6 py-2 sm:py-3 bg-purple-400 text-black
-                    font-semibold rounded-full shadow-md hover:bg-purple-500 transition-transform
-                    transform hover:scale-105 delay-600 '>
-                        Get started
-
-                    </button>
-                   <a className='cursor-pointer'
-                    href="https://www.tiktok.com/@ameer__804?_t=ZS-90VlRiRx75h&_r=1">
-                     <button  className='px-4 cursor-pointer sm:py-6 py-2 sm:py-3 bg-white text-black
-                    font-semibold rounded-full shadow-md hover:bg-gray-100 transition-transform
-                    transform hover:scale-105 delay-700 flex items-center gap-2 '>
-                        <FaPlay className='text-black text-xl'/>Watch Demo
-
-                    </button>
-
-
-                   </a>
-                </div>
-                {/*social media icons*/}
-                <div className='flex gap-6 mt-4 animate-fadeIn delay-800 justify-center
-                lg:justify-start'>
-                    <a href="https://www.facebook.com/share/1AF79UidTp/" aria-label='FaceBook'
-                    className='text-purple-500 text-2xl sm:text-3xl transition-transform
-                    transform hover:scale-110'>
-                        <FaFacebook/>
-                    </a>
-                    <a href="https://www.instagram.com/ame_erkhan804?utm_source=qr&igsh=MWVnMWdycHFkNzN4Mg==" aria-label='Instagram'
-                    className='text-purple-500 text-2xl sm:text-3xl transition-transform
-                    transform hover:scale-110'>
-                        <FaInstagram/>
-                    </a>
-                    <a href="https://www.tiktok.com/@ameer__804?_t=ZS-90VlRiRx75h&_r=1" aria-label='TikTok'
-                    className='text-purple-500 text-2xl sm:text-3xl transition-transform
-                    transform hover:scale-110'>
-                        <FaTiktok/>
-                    </a>
-
-                </div>
-
-            </div>
-            {/*bg image */}
-            <div className='absolute top-0 right-0 h-full w-full lg:w-1/2 flex justify-center items-center
-            '>
-                <img src={bgimage} alt="bg"
-                className='h-full w-full mb-10 object-contain opacity-80 animate-zoomInSlow' />
-            </div>
-
-        </div>
-        {/*new sextion */}
-        <div className='bg-black py-12 sm:py-16 text-white'>
-            <div className='container mx-auto px-4 sm:px-8 text-center'>
-                <div className='grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-8 sm:gap12'>
-                    <div className='flex flex-col items-center gap-4 animate-fadeIn delay-200'>
-                        <FaMedal className='text-purple-500 text-3xl sm:text-4xl'/>
-                        <span className='text-sm sm:text-lg md:text-xl font-semibold'>
-                            5+ Years of Services
-                        </span>
-                    </div>
-                    <div className='flex flex-col items-center gap-4 animate-fadeIn delay-400'>
-                        <FaCertificate className='text-purple-500 text-3xl sm:text-4xl'/>
-                        <span className='text-sm sm:text-lg md:text-xl font-semibold'>
-                            Our Certfied Trainer
-                        </span>
-                    </div>
-                    <div className='flex flex-col items-center gap-4 animate-fadeIn delay-600'>
-                        <FaUsers className='text-purple-500 text-3xl sm:text-4xl'/>
-                        <span className='text-sm sm:text-lg md:text-xl font-semibold'>
-                           1000+ Happy Members
-                        </span>
-                    </div>
-                    <div className='flex flex-col items-center gap-4 animate-fadeIn delay-800'>
-                        <FaThumbsUp className='text-purple-500 text-3xl sm:text-4xl'/>
-                        <span className='text-sm sm:text-lg md:text-xl font-semibold'>
-                            95% Customer Satisfaction 
-                        </span>
-                    </div>
-
-
-
-
-                </div>
-
-            </div>
-        </div>
-      
+      {/* ================= VIDEO MODAL ================= */}
+      <AnimatePresence>
+        {showVideo && (
+          <motion.div
+            className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center"
+            onClick={() => setShowVideo(false)}
+          >
+            <motion.video
+              controls
+              autoPlay
+              className="w-[90%] md:w-[70%] lg:w-[50%] rounded-xl"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <source src={demoVideo} type="video/mp4" />
+            </motion.video>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
-  )
-}
+  );
+};
 
-export default Banner
+export default Banner;

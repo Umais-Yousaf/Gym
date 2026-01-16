@@ -93,7 +93,7 @@ const Pricing = () => {
                                         flex items-center justify-center text-white'> 
                                         &#x2713;
                                        </span>
-                                    ): (<span className='w-6 h-6 bg-red-600 rounded-full
+                                        ): (<span className='w-6 h-6 bg-red-600 rounded-full
                                         flex items-center justify-center text-white'> 
                                         &#x2717;
                                        </span>
